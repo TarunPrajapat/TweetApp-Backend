@@ -1,0 +1,32 @@
+- Docker compose and download
+
+Docker-compose up -d
+ ======================================================================================== 
+- See kafka logs 
+
+Docker-compose logs kafka 
+==========================================================================================
+
+- see zookeeper logs
+
+Docker-compose logs zookeeper
+==========================================================================================
+
+
+- Running kakfka producer in docker // must check the topic name and network name
+docker run -it --rm --network tweetapp_network confluentinc/cp-kafka /bin/kafka-console-producer --bootstrap-server kafka:9092 --topic tweets
+
+==============================================================================================
+
+- Running kakfka consumer in docker // must check the topic name 
+docker run -it --rm --network tweetapp_network confluentinc/cp-kafka /bin/kafka-console-consumer --bootstrap-server kafka:9092 --topic tweets
+
+===============================================================================================
+
+- To connect with kafka by our spring boot producer application we must have give the property in application.properties fiie
+spring.kafka.producer.bootstrap-servers=localhost:29092
+=================================================================================================
+
+- To execute mongo on docker 
+
+docker exec -it mongo mongo
